@@ -1,0 +1,7 @@
+build
+vendor
+phpunit.xml
+.psalm
+.phpunit.result.cache
+.php-cs-fixer.cache
+.vscode
