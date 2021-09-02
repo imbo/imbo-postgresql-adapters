@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS public.imageinfo;
-
-CREATE TABLE public.imageinfo (
+CREATE TABLE IF NOT EXISTS public.imageinfo (
   "id" serial NOT NULL,
   "user" character varying COLLATE pg_catalog."default" NOT NULL,
   "imageIdentifier" character varying COLLATE pg_catalog."default" NOT NULL,
@@ -18,9 +16,7 @@ CREATE TABLE public.imageinfo (
   CONSTRAINT "imageinfo_user_imageIdentifier_key" UNIQUE ("user", "imageIdentifier")
 ) TABLESPACE pg_default;
 
-DROP TABLE IF EXISTS public.imagevariations;
-
-CREATE TABLE public.imagevariations (
+CREATE TABLE IF NOT EXISTS public.imagevariations (
   "user" character varying COLLATE pg_catalog."default" NOT NULL,
   "imageIdentifier" character varying COLLATE pg_catalog."default" NOT NULL,
   "width" integer NOT NULL,
@@ -29,9 +25,7 @@ CREATE TABLE public.imagevariations (
   CONSTRAINT "imagevariations_pkey" PRIMARY KEY ("user", "imageIdentifier", "width")
 ) TABLESPACE pg_default;
 
-DROP TABLE IF EXISTS public.shorturl;
-
-CREATE TABLE public.shorturl (
+CREATE TABLE IF NOT EXISTS public.shorturl (
   "shortUrlId" character varying(7) COLLATE pg_catalog."default" NOT NULL,
   "user" character varying COLLATE pg_catalog."default" NOT NULL,
   "imageIdentifier" character varying COLLATE pg_catalog."default" NOT NULL,
@@ -40,7 +34,7 @@ CREATE TABLE public.shorturl (
   CONSTRAINT "shorturl_pkey" PRIMARY KEY ("shortUrlId")
 ) TABLESPACE pg_default;
 
-CREATE INDEX "params" ON public.shorturl USING btree (
+CREATE INDEX IF NOT EXISTS "params" ON public.shorturl USING btree (
   "user" COLLATE pg_catalog."default" ASC NULLS LAST,
   "imageIdentifier" COLLATE pg_catalog."default" ASC NULLS LAST,
   "extension" COLLATE pg_catalog."default" ASC NULLS LAST,
