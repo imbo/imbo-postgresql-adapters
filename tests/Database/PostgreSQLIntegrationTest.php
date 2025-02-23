@@ -2,14 +2,16 @@
 namespace Imbo\Database;
 
 use PDO;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @coversDefaultClass Imbo\Database\PostgreSQL
- */
+#[CoversClass(PostgreSQL::class)]
 class PostgreSQLIntegrationTest extends DatabaseTests
 {
     private PDO $pdo;
 
+    /**
+     * @param array<mixed> $image
+     */
     protected function insertImage(array $image): void
     {
         $stmt = $this->pdo->prepare("

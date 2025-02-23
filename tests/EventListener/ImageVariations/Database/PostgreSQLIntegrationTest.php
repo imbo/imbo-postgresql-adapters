@@ -2,10 +2,9 @@
 namespace Imbo\EventListener\ImageVariations\Database;
 
 use PDO;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @coversDefaultClass Imbo\EventListener\ImageVariations\Database\PostgreSQL
- */
+#[CoversClass(PostgreSQL::class)]
 class PostgreSQLIntegrationTest extends DatabaseTests
 {
     protected function getAdapter(): PostgreSQL
