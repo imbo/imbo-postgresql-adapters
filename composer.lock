@@ -12,23 +12,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/imbo/imbo-pdo-adapters.git",
-                "reference": "43bd9a7ad56dfb5ab2c13719f9e49b1eebb587b7"
+                "reference": "7406c03c5adf6ce60d60ac5856a1d064096cd841"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imbo/imbo-pdo-adapters/zipball/43bd9a7ad56dfb5ab2c13719f9e49b1eebb587b7",
-                "reference": "43bd9a7ad56dfb5ab2c13719f9e49b1eebb587b7",
+                "url": "https://api.github.com/repos/imbo/imbo-pdo-adapters/zipball/7406c03c5adf6ce60d60ac5856a1d064096cd841",
+                "reference": "7406c03c5adf6ce60d60ac5856a1d064096cd841",
                 "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
-                "php": ">=8.1"
+                "php": ">=8.3"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.70",
                 "imbo/imbo": "dev-main",
                 "imbo/imbo-coding-standard": "^2.0",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.5"
+                "phpstan/phpstan": "^2.1"
             },
             "default-branch": true,
             "type": "library",
@@ -61,7 +61,7 @@
                 "issues": "https://github.com/imbo/imbo-pdo-adapters/issues",
                 "source": "https://github.com/imbo/imbo-pdo-adapters/tree/main"
             },
-            "time": "2023-04-09T09:04:50+00:00"
+            "time": "2025-02-24T06:39:46+00:00"
         }
     ],
     "packages-dev": [
