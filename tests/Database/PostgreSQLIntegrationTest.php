@@ -7,37 +7,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(PostgreSQL::class)]
 class PostgreSQLIntegrationTest extends DatabaseTests
 {
-    private PDO $pdo;
-
-    /**
-     * @param array<mixed> $image
-     */
-    protected function insertImage(array $image): void
-    {
-        $stmt = $this->pdo->prepare("
-            INSERT INTO imageinfo (
-                user, imageIdentifier, size, extension, mime, added, updated, width, height,
-                checksum, originalChecksum
-            ) VALUES (
-                :user, :imageIdentifier, :size, :extension, :mime, :added, :updated, :width,
-                :height, :checksum, :originalChecksum
-            )
-        ");
-        $stmt->execute([
-            ':user'             => $image['user'],
-            ':imageIdentifier'  => $image['imageIdentifier'],
-            ':size'             => $image['size'],
-            ':extension'        => $image['extension'],
-            ':mime'             => $image['mime'],
-            ':added'            => $image['added'],
-            ':updated'          => $image['updated'],
-            ':width'            => $image['width'],
-            ':height'           => $image['height'],
-            ':checksum'         => $image['checksum'],
-            ':originalChecksum' => $image['originalChecksum'],
-        ]);
-    }
-
     protected function getAdapter(): PostgreSQL
     {
         return new PostgreSQL(
@@ -51,10 +20,13 @@ class PostgreSQLIntegrationTest extends DatabaseTests
     {
         parent::setUp();
 
-        $this->pdo = new PDO(
+        $pdo = new PDO(
             (string) getenv('DB_DSN'),
             (string) getenv('DB_USERNAME'),
             (string) getenv('DB_PASSWORD'),
+            [
+                PDO::ATTR_PERSISTENT => true,
+            ],
         );
 
         $tables = [
@@ -63,7 +35,7 @@ class PostgreSQLIntegrationTest extends DatabaseTests
         ];
 
         foreach ($tables as $table) {
-            $this->pdo->query(sprintf('DELETE FROM "%s"', $table));
+            $pdo->exec(sprintf('DELETE FROM "%s"', $table));
         }
     }
 }
