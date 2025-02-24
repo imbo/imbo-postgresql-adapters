@@ -21,7 +21,7 @@ If you want to run the integration tests you will need a running PostgreSQL serv
 If you wish to use this, run the following command to start up the service after you have cloned the repo:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 After the service is running you can execute all tests by simply running PHPUnit:
