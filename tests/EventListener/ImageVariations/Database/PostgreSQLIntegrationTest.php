@@ -26,6 +26,6 @@ class PostgreSQLIntegrationTest extends DatabaseTests
             (string) getenv('DB_PASSWORD'),
         );
 
-        $pdo->query(sprintf('DELETE FROM "%s"', PostgreSQL::IMAGEVARIATIONS_TABLE));
+        $pdo->exec(sprintf('DELETE FROM "%s"', PostgreSQL::IMAGEVARIATIONS_TABLE));
     }
 }
